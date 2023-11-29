@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "676946122343",
+    "firebase_url": "https://contatospdmbackend2023-3-default-rtdb.firebaseio.com",
+    "project_id": "contatospdmbackend2023-3",
+    "storage_bucket": "contatospdmbackend2023-3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676946122343:android:b024159469c18839dce6c2",
+        "android_client_info": {
+          "package_name": "br.edu.scl.ifsp.ads.oneMenssageChat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8egBrqsTqkAEMJ8RfcVWpd0ne1NW-7-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
