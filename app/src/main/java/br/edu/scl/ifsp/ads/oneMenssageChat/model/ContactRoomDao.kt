@@ -9,7 +9,6 @@ import androidx.room.Update
 @Dao
 interface ContactRoomDao {
     companion object {
-        const val CONTACT_DATABASE_FILE = "contacts_room"
         private const val CONTACT_TABLE = "contact"
         private const val ID_COLUMN = "id"
         private const val NAME_COLUMN = "name"

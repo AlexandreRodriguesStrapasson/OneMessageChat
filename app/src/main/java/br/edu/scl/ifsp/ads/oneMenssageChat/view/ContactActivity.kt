@@ -28,14 +28,10 @@ class ContactActivity : AppCompatActivity() {
             with(acb) {
                 if (viewContact) {
                     nameEt.isEnabled = false
-                    addressEt.isEnabled = false
-                    phoneEt.isEnabled = false
                     emailEt.isEnabled = false
                     saveBt.visibility = View.GONE
                 }
                 nameEt.setText(_receivedContact.name)
-                addressEt.setText(_receivedContact.address)
-                phoneEt.setText(_receivedContact.phone)
                 emailEt.setText(_receivedContact.email)
             }
         }
@@ -45,8 +41,6 @@ class ContactActivity : AppCompatActivity() {
                 val contact = Contact(
                     id = receivedContact?.id ?: generateId(),
                     name = nameEt.text.toString(),
-                    address = addressEt.text.toString(),
-                    phone = phoneEt.text.toString(),
                     email = emailEt.text.toString()
                 )
 

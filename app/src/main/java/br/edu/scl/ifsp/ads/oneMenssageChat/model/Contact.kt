@@ -14,9 +14,5 @@ data class Contact(
     @NonNull
     var name: String = "",
     @NonNull
-    var address: String = "",
-    @NonNull
-    var phone: String = "",
-    @NonNull
     var email: String = ""
 ): Parcelable
