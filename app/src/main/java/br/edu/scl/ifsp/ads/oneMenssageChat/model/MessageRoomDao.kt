@@ -7,7 +7,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface ContactRoomDao {
+interface MessageRoomDao {
     companion object {
         private const val CONTACT_TABLE = "contact"
         private const val ID_COLUMN = "id"

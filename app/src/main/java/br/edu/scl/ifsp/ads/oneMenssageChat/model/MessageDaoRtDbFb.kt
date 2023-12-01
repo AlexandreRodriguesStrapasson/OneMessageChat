@@ -8,7 +8,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 
-class ContactDaoRtDbFb: ContactDao{
+class MessageDaoRtDbFb: MessageDao{
     companion object{
         private const val MESSAGE_LIST_ROOT_NODE = "MessageList"
     }
