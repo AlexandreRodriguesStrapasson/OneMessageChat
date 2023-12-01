@@ -46,17 +46,13 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val GET_CONTACTS_MSG = 1
         const val GET_CONTACTS_INTERVAL = 2000L
-
     }
 
     // Handler
     val updateContactListHandler = object: Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-
-            //Busca os contatos ou atualiza a lista de acordo com o tipo da mensagem
             if(msg.what == GET_CONTACTS_MSG){
-                //Busca os contatos de acordo com o intervalo e agenda uma nova busca
                 contactController.getContacts()
                 sendMessageDelayed(obtainMessage().apply { what = GET_CONTACTS_MSG },
                     GET_CONTACTS_INTERVAL

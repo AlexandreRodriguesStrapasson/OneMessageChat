@@ -48,19 +48,12 @@ class MessageDaoRtDbFb: MessageDao{
                 }
             }
 
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                //NSA
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                //NSA - Não Se Aplica
-            }
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+            override fun onCancelled(error: DatabaseError) {}
         })
 
-        //Listener chamado uma única vez quando o app é aberto
         contactRtDbFbReference.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                //esse snapshot pega todos que estão abaixo do dom raiz, é um snapshot do bd como um tudo
                 val contactMap = snapshot.getValue<Map<String, Contact>>()
 
                 MessageList.clear()
@@ -71,9 +64,7 @@ class MessageDaoRtDbFb: MessageDao{
 
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                //NSA
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 
