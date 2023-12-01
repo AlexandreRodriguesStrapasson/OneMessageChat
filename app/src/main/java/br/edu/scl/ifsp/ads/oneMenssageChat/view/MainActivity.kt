@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
         amb.messageLv.setOnItemClickListener { parent, view, position, id ->
             val contact = contactList[position]
-            val viewContactIntent = Intent(this, ContactActivity::class.java)
+            val viewContactIntent = Intent(this, MessageActivity::class.java)
             viewContactIntent.putExtra(EXTRA_CONTACT, contact)
             viewContactIntent.putExtra(VIEW_CONTACT, true)
             startActivity(viewContactIntent)
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.addContactMi -> {
-                carl.launch(Intent(this, ContactActivity::class.java))
+                carl.launch(Intent(this, MessageActivity::class.java))
                 true
             }
             else -> false
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.editContactMi -> {
-                val editContactIntent = Intent(this, ContactActivity::class.java)
+                val editContactIntent = Intent(this, MessageActivity::class.java)
                 editContactIntent.putExtra(EXTRA_CONTACT, contact)
                 carl.launch(editContactIntent)
                 true

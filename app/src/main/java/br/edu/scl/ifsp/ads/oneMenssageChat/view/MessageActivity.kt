@@ -10,7 +10,7 @@ import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.VIEW_CONTACT
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Contact
 import java.util.Random
 
-class ContactActivity : AppCompatActivity() {
+class MessageActivity : AppCompatActivity() {
     private val acb: ActivityContactBinding by lazy {
         ActivityContactBinding.inflate(layoutInflater)
     }
