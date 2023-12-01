@@ -14,8 +14,6 @@ class MessageDaoRtDbFb: MessageDao{
     }
 
     private val contactRtDbFbReference = Firebase.database.getReference(MESSAGE_LIST_ROOT_NODE)
-
-    //Simula uma consulta ao Realtime Database
     private val MessageList: MutableList <Contact> = mutableListOf()
 
     init{

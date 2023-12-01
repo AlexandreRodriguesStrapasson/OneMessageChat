@@ -17,7 +17,7 @@
         />
 
     <EditText
-        android:id="@+id/nameEt"
+        android:id="@+id/topicEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbarIn" />
 
     <EditText
-        android:id="@+id/emailEt"
+        android:id="@+id/msgEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -36,14 +36,14 @@
         android:hint="@string/Message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEt" />
+        app:layout_constraintTop_toBottomOf="@+id/topicEt" />
 
     <Button
         android:id="@+id/saveBt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/save"
+        android:text="@string/Send"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEt" />
+        app:layout_constraintTop_toBottomOf="@+id/msgEt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

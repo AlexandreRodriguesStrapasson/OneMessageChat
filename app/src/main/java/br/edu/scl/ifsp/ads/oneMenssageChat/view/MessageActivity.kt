@@ -27,12 +27,12 @@ class MessageActivity : AppCompatActivity() {
             val viewContact = intent.getBooleanExtra(VIEW_MSG, false)
             with(acb) {
                 if (viewContact) {
-                    nameEt.isEnabled = false
-                    emailEt.isEnabled = false
+                    topicEt.isEnabled = false
+                    msgEt.isEnabled = false
                     saveBt.visibility = View.GONE
                 }
-                nameEt.setText(_receivedContact.name)
-                emailEt.setText(_receivedContact.email)
+                topicEt.setText(_receivedContact.name)
+                msgEt.setText(_receivedContact.email)
             }
         }
 
@@ -40,8 +40,8 @@ class MessageActivity : AppCompatActivity() {
             saveBt.setOnClickListener {
                 val contact = Contact(
                     id = receivedContact?.id ?: generateId(),
-                    name = nameEt.text.toString(),
-                    email = emailEt.text.toString()
+                    name = topicEt.text.toString(),
+                    email = msgEt.text.toString()
                 )
 
                 val resultIntent = Intent()
