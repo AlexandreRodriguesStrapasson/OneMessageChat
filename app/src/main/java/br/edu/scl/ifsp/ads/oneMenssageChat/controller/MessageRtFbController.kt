@@ -3,11 +3,11 @@ package br.edu.scl.ifsp.ads.oneMenssageChat.controller
 import android.os.Message
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Contact
-import br.edu.scl.ifsp.ads.oneMenssageChat.model.ContactDaoRtDbFb
+import br.edu.scl.ifsp.ads.oneMenssageChat.model.MessageDaoRtDbFb
 import br.edu.scl.ifsp.ads.oneMenssageChat.view.MainActivity
 
 class MessageRtFbController(private val mainActivity: MainActivity) {
-    private val messageDaoImpl: ContactDaoRtDbFb = ContactDaoRtDbFb()
+    private val messageDaoImpl: MessageDaoRtDbFb = MessageDaoRtDbFb()
 
     fun insertContact(contact: Contact) {
         Thread {
