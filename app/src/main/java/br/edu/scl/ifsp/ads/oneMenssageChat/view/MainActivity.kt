@@ -16,7 +16,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import br.edu.scl.ifsp.ads.oneMenssageChat.R
 import br.edu.scl.ifsp.ads.oneMenssageChat.adapter.ContactAdapter
-import br.edu.scl.ifsp.ads.oneMenssageChat.controller.ContactRtFbController
+import br.edu.scl.ifsp.ads.oneMenssageChat.controller.MessageRtFbController
 import br.edu.scl.ifsp.ads.oneMenssageChat.databinding.ActivityMainBinding
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.CONTACT_ARRAY
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.EXTRA_CONTACT
@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
     private val contactList: MutableList<Contact> = mutableListOf()
 
     // Controller
-    private val contactController: ContactRtFbController by lazy {
-        ContactRtFbController(this)
+    private val contactController: MessageRtFbController by lazy {
+        MessageRtFbController(this)
     }
 
     // Adapter
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
         setSupportActionBar(amb.toolbarIn.toolbar)
-        amb.contatosLv.adapter = contactAdapter
+        amb.messageLv.adapter = contactAdapter
         carl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if(result.resultCode == RESULT_OK) {
                 val contact = result.data?.getParcelableExtra<Contact>(EXTRA_CONTACT)
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        amb.contatosLv.setOnItemClickListener { parent, view, position, id ->
+        amb.messageLv.setOnItemClickListener { parent, view, position, id ->
             val contact = contactList[position]
             val viewContactIntent = Intent(this, ContactActivity::class.java)
             viewContactIntent.putExtra(EXTRA_CONTACT, contact)
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(viewContactIntent)
         }
 
-        registerForContextMenu(amb.contatosLv)
+        registerForContextMenu(amb.messageLv)
         updateContactListHandler.apply {
             sendMessageDelayed(obtainMessage().apply { what = GET_CONTACTS_MSG },
                 GET_CONTACTS_INTERVAL
@@ -155,6 +155,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterForContextMenu(amb.contatosLv)
+        unregisterForContextMenu(amb.messageLv)
     }
 }

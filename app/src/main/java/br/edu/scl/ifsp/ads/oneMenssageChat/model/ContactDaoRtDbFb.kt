@@ -10,13 +10,13 @@ import com.google.firebase.database.getValue
 
 class ContactDaoRtDbFb: ContactDao{
     companion object{
-        private const val CONTACT_LIST_ROOT_NODE = "contactList"
+        private const val MESSAGE_LIST_ROOT_NODE = "MessageList"
     }
 
-    private val contactRtDbFbReference = Firebase.database.getReference(CONTACT_LIST_ROOT_NODE)
+    private val contactRtDbFbReference = Firebase.database.getReference(MESSAGE_LIST_ROOT_NODE)
 
     //Simula uma consulta ao Realtime Database
-    private val contactList: MutableList <Contact> = mutableListOf()
+    private val MessageList: MutableList <Contact> = mutableListOf()
 
     init{
         contactRtDbFbReference.addChildEventListener(object: ChildEventListener{
@@ -24,8 +24,8 @@ class ContactDaoRtDbFb: ContactDao{
                 val contact: Contact? = snapshot.getValue<Contact>()
 
                 contact?.also{newContact ->
-                    if(!contactList.any{it.id == newContact.id}) {
-                        contactList.add(newContact)
+                    if(!MessageList.any{it.id == newContact.id}) {
+                        MessageList.add(newContact)
                     }
                 }
             }
@@ -34,7 +34,7 @@ class ContactDaoRtDbFb: ContactDao{
                 val contact: Contact? = snapshot.getValue<Contact>()
 
                 contact?.also{editContact ->
-                    contactList.apply {
+                    MessageList.apply {
                         this[indexOfFirst { editContact.id == it.id }] = editContact
                     }
                 }
@@ -44,7 +44,7 @@ class ContactDaoRtDbFb: ContactDao{
                 val contact: Contact? = snapshot.getValue<Contact>()
 
                 contact?.also{
-                    contactList.remove(it)
+                    MessageList.remove(it)
                 }
             }
 
@@ -63,9 +63,9 @@ class ContactDaoRtDbFb: ContactDao{
                 //esse snapshot pega todos que estão abaixo do dom raiz, é um snapshot do bd como um tudo
                 val contactMap = snapshot.getValue<Map<String, Contact>>()
 
-                contactList.clear()
+                MessageList.clear()
                 contactMap?.values?.also {
-                    contactList.addAll(it)
+                    MessageList.addAll(it)
                 }
 
 
@@ -83,10 +83,10 @@ class ContactDaoRtDbFb: ContactDao{
     }
 
     override fun retrieveContact(id: Int): Contact? {
-        return contactList[contactList.indexOfFirst { it.id == id }]
+        return MessageList[MessageList.indexOfFirst { it.id == id }]
     }
 
-    override fun retrieveContacts(): MutableList<Contact> = contactList
+    override fun retrieveContacts(): MutableList<Contact> = MessageList
 
     override fun updateContact(contact: Contact): Int {
         createOrUpdateContact(contact)

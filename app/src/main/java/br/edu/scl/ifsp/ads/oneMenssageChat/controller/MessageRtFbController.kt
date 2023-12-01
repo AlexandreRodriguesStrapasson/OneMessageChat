@@ -6,20 +6,20 @@ import br.edu.scl.ifsp.ads.oneMenssageChat.model.Contact
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.ContactDaoRtDbFb
 import br.edu.scl.ifsp.ads.oneMenssageChat.view.MainActivity
 
-class ContactRtFbController(private val mainActivity: MainActivity) {
-    private val contactDaoImpl: ContactDaoRtDbFb = ContactDaoRtDbFb()
+class MessageRtFbController(private val mainActivity: MainActivity) {
+    private val messageDaoImpl: ContactDaoRtDbFb = ContactDaoRtDbFb()
 
     fun insertContact(contact: Contact) {
         Thread {
-            contactDaoImpl.createContact(contact)
+            messageDaoImpl.createContact(contact)
         }.start()
     }
 
-    fun getContact(id: Int) = contactDaoImpl.retrieveContact(id)
+    fun getContact(id: Int) = messageDaoImpl.retrieveContact(id)
 
     fun getContacts() {
         Thread {
-            val returnList = contactDaoImpl.retrieveContacts()
+            val returnList = messageDaoImpl.retrieveContacts()
             val message = Message()
             message.data.putParcelableArray(
                 Constant.CONTACT_ARRAY,
@@ -31,13 +31,13 @@ class ContactRtFbController(private val mainActivity: MainActivity) {
 
     fun editContact(contact: Contact) {
         Thread {
-            contactDaoImpl.updateContact(contact)
+            messageDaoImpl.updateContact(contact)
         }.start()
     }
     fun removeContact(contact: Contact) {
         Thread {
             contact.id?.also {
-                contactDaoImpl.deleteContact(it)
+                messageDaoImpl.deleteContact(it)
             }
         }.start()
     }

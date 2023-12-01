@@ -8,13 +8,13 @@
         android:id="@+id/nameTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pedro"
+        android:text="@string/Topic"
         android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/emailTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="nobile@ifsp.edu.br"/>
+        android:text="@string/Message"/>
 
 </LinearLayout>
