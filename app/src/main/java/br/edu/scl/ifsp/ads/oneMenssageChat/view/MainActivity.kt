@@ -18,9 +18,9 @@ import br.edu.scl.ifsp.ads.oneMenssageChat.R
 import br.edu.scl.ifsp.ads.oneMenssageChat.adapter.MessageAdapter
 import br.edu.scl.ifsp.ads.oneMenssageChat.controller.MessageRtFbController
 import br.edu.scl.ifsp.ads.oneMenssageChat.databinding.ActivityMainBinding
-import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.CONTACT_ARRAY
-import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.EXTRA_CONTACT
-import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.VIEW_CONTACT
+import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.MSG_ARRAY
+import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.EXTRA_MSG
+import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.VIEW_MSG
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Contact
 
 class MainActivity : AppCompatActivity() {
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     GET_CONTACTS_INTERVAL
                 )
             }else{
-                msg.data.getParcelableArray(CONTACT_ARRAY)?.also { contactArray ->
+                msg.data.getParcelableArray(MSG_ARRAY)?.also { contactArray ->
                     contactList.clear()
                     contactArray.forEach {
                         contactList.add(it as Contact)
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         amb.messageLv.adapter = messageAdapter
         carl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if(result.resultCode == RESULT_OK) {
-                val contact = result.data?.getParcelableExtra<Contact>(EXTRA_CONTACT)
+                val contact = result.data?.getParcelableExtra<Contact>(EXTRA_MSG)
                 contact?.let{_contact ->
                     if (contactList.any { it.id == _contact.id }) {
                         contactController.editContact(_contact)
@@ -92,8 +92,8 @@ class MainActivity : AppCompatActivity() {
         amb.messageLv.setOnItemClickListener { parent, view, position, id ->
             val contact = contactList[position]
             val viewContactIntent = Intent(this, MessageActivity::class.java)
-            viewContactIntent.putExtra(EXTRA_CONTACT, contact)
-            viewContactIntent.putExtra(VIEW_CONTACT, true)
+            viewContactIntent.putExtra(EXTRA_MSG, contact)
+            viewContactIntent.putExtra(VIEW_MSG, true)
             startActivity(viewContactIntent)
         }
 
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.editContactMi -> {
                 val editContactIntent = Intent(this, MessageActivity::class.java)
-                editContactIntent.putExtra(EXTRA_CONTACT, contact)
+                editContactIntent.putExtra(EXTRA_MSG, contact)
                 carl.launch(editContactIntent)
                 true
             }

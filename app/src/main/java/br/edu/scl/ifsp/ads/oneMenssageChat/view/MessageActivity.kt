@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import br.edu.scl.ifsp.ads.oneMenssageChat.databinding.ActivityContactBinding
-import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.EXTRA_CONTACT
-import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.VIEW_CONTACT
+import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.EXTRA_MSG
+import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.VIEW_MSG
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Contact
 import java.util.Random
 
@@ -20,11 +20,11 @@ class MessageActivity : AppCompatActivity() {
         setContentView(acb.root)
 
         setSupportActionBar(acb.toolbarIn.toolbar)
-        supportActionBar?.subtitle = "Contact details"
+        supportActionBar?.subtitle = "Menssage details"
 
-        val receivedContact = intent.getParcelableExtra<Contact>(EXTRA_CONTACT)
+        val receivedContact = intent.getParcelableExtra<Contact>(EXTRA_MSG)
         receivedContact?.let{_receivedContact ->
-            val viewContact = intent.getBooleanExtra(VIEW_CONTACT, false)
+            val viewContact = intent.getBooleanExtra(VIEW_MSG, false)
             with(acb) {
                 if (viewContact) {
                     nameEt.isEnabled = false
@@ -45,7 +45,7 @@ class MessageActivity : AppCompatActivity() {
                 )
 
                 val resultIntent = Intent()
-                resultIntent.putExtra(EXTRA_CONTACT, contact)
+                resultIntent.putExtra(EXTRA_MSG, contact)
                 setResult(RESULT_OK, resultIntent)
                 finish()
             }

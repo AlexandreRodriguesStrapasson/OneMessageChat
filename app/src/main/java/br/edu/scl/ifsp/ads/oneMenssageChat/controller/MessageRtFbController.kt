@@ -11,18 +11,18 @@ class MessageRtFbController(private val mainActivity: MainActivity) {
 
     fun insertContact(contact: Contact) {
         Thread {
-            messageDaoImpl.createContact(contact)
+            messageDaoImpl.createMsg(contact)
         }.start()
     }
 
-    fun getContact(id: Int) = messageDaoImpl.retrieveContact(id)
+    fun getContact(id: Int) = messageDaoImpl.retrieveMsg(id)
 
     fun getContacts() {
         Thread {
-            val returnList = messageDaoImpl.retrieveContacts()
+            val returnList = messageDaoImpl.retrieveMsg()
             val message = Message()
             message.data.putParcelableArray(
-                Constant.CONTACT_ARRAY,
+                Constant.MSG_ARRAY,
                 returnList.toTypedArray()
             )
             mainActivity.updateContactListHandler.sendMessage(message)
@@ -31,13 +31,13 @@ class MessageRtFbController(private val mainActivity: MainActivity) {
 
     fun editContact(contact: Contact) {
         Thread {
-            messageDaoImpl.updateContact(contact)
+            messageDaoImpl.updateMsg(contact)
         }.start()
     }
     fun removeContact(contact: Contact) {
         Thread {
             contact.id?.also {
-                messageDaoImpl.deleteContact(it)
+                messageDaoImpl.deleteMsg(it)
             }
         }.start()
     }

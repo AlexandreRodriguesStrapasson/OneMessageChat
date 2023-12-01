@@ -68,23 +68,23 @@ class MessageDaoRtDbFb: MessageDao{
         })
     }
 
-    override fun createContact(contact: Contact): Int {
+    override fun createMsg(contact: Contact): Int {
         createOrUpdateContact(contact)
         return 1
     }
 
-    override fun retrieveContact(id: Int): Contact? {
+    override fun retrieveMsg(id: Int): Contact? {
         return MessageList[MessageList.indexOfFirst { it.id == id }]
     }
 
-    override fun retrieveContacts(): MutableList<Contact> = MessageList
+    override fun retrieveMsg(): MutableList<Contact> = MessageList
 
-    override fun updateContact(contact: Contact): Int {
+    override fun updateMsg(contact: Contact): Int {
         createOrUpdateContact(contact)
         return 1
     }
 
-    override fun deleteContact(id: Int): Int {
+    override fun deleteMsg(id: Int): Int {
         contactRtDbFbReference.child(id.toString()).removeValue()
         return 1
     }
