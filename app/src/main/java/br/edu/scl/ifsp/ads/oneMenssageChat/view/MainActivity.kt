@@ -15,7 +15,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import br.edu.scl.ifsp.ads.oneMenssageChat.R
-import br.edu.scl.ifsp.ads.oneMenssageChat.adapter.ContactAdapter
+import br.edu.scl.ifsp.ads.oneMenssageChat.adapter.MessageAdapter
 import br.edu.scl.ifsp.ads.oneMenssageChat.controller.MessageRtFbController
 import br.edu.scl.ifsp.ads.oneMenssageChat.databinding.ActivityMainBinding
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Constant.CONTACT_ARRAY
@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Adapter
-    private val contactAdapter: ContactAdapter by lazy {
-        ContactAdapter(
+    private val messageAdapter: MessageAdapter by lazy {
+        MessageAdapter(
             this,
             contactList)
     }
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                     contactArray.forEach {
                         contactList.add(it as Contact)
                     }
-                    contactAdapter.notifyDataSetChanged()
+                    messageAdapter.notifyDataSetChanged()
                 }
             }
         }
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
         setSupportActionBar(amb.toolbarIn.toolbar)
-        amb.messageLv.adapter = contactAdapter
+        amb.messageLv.adapter = messageAdapter
         carl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if(result.resultCode == RESULT_OK) {
                 val contact = result.data?.getParcelableExtra<Contact>(EXTRA_CONTACT)

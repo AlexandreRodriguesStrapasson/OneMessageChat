@@ -11,7 +11,7 @@ import br.edu.scl.ifsp.ads.oneMenssageChat.R
 import br.edu.scl.ifsp.ads.oneMenssageChat.databinding.TileContactBinding
 import br.edu.scl.ifsp.ads.oneMenssageChat.model.Contact
 
-class ContactAdapter(context: Context, private val contactList: MutableList<Contact>):
+class MessageAdapter(context: Context, private val contactList: MutableList<Contact>):
     ArrayAdapter<Contact>(context, R.layout.tile_contact, contactList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
