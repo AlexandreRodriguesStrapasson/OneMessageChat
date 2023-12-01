@@ -5,14 +5,14 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
     <TextView
-        android:id="@+id/nameTv"
+        android:id="@+id/topicTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Topic"
         android:textSize="25sp"/>
 
     <TextView
-        android:id="@+id/emailTv"
+        android:id="@+id/messageTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Message"/>
